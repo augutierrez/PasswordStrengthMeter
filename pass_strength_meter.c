@@ -1,7 +1,10 @@
-//Antonio Gutierrez
-//CS 221
-//PROJECT 1
-// Professor Vahab
+/*
+Antonio Gutierrez
+CS 221
+PROJECT 1
+Professor Vahab
+*/
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <ctype.h>
@@ -20,8 +23,8 @@ bool isStrongDefaultPassword(const char* username, const char* password){
 	bool differentThanUser= true;
 	bool noSpecialChar=true;
 
-
-	if (strlen(password) >= 8 && strlen(password) <= 15){ // checks to make sure the password is atleast 8 char long
+	//password must be within 8-15 char long
+	if (strlen(password) >= 8 && strlen(password) <= 15){
 		length = true;
 	}
 
@@ -207,7 +210,28 @@ bool isStrongPassword(const char* username, const char* password) {
 		return true;
 	}
 	else { //if the conditions aren't met, user is prompted to try again.
-		printf("Your password is week. Try again!\n");
+		if(!length){
+			printf("Your password does not meet the length requirement. It must be atleast 8 characters long, and no more than 15 characters max!");
+		}
+		else if(!uppercase){
+			printf("Your password must have atleast one uppercase letter!");
+		}
+		else if(!lowercase){
+			printf("Your password must have atleast one lowercase letter!");
+		}
+		else if(!number){
+			printf("Your password must contain atleast one number!");
+		}
+		else if(!string){
+			printf("Your password must have atleast four (4) consecutive letters");
+		}
+		else if(!differentThanUser){
+			printf("Your password cannot contain your username in it!");
+		}
+		else if(!noSpecialChar){
+			printf("Your password cannot contain special characters! Only numbers and digits");
+		}
+		printf("\n");
 		return false;
 	}
 
